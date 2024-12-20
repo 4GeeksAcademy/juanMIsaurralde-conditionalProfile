@@ -28,19 +28,29 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-
+  //------ ATENCION CONNOR ------//
+  // Primero lo realice directo en el HTML del template literal y luego lo realice de esta forma, solo para presentar algo diferente
+  let twitter = variables.twitter ? variables.twitter : "";
+  let github = variables.github ? variables.github : "";
+  let linkedin = variables.linkedin ? variables.linkedin : "";
+  let instagram = variables.instagram ? variables.instagram : "";
+  let name = variables.name ? variables.name : "Your Name";
+  let lastName = variables.lastName ? variables.lastName : "Your Lastname";
+  let role = variables.role ? variables.role : "Your Role";
+  let country = variables.country ? variables.country : "Your Country";
+  let city = variables.city ? variables.city : "Your City";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${name} ${lastName}</h1>
+          <h2>${role}</h2>
+          <h3>${city},  ${country}</h3>
+          <ul class="${variables.socialMediaPosition}">
+          <li><a href="https://twitter.com/${twitter}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${github}" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/${linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagram}" target="_blank"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
